@@ -96,7 +96,7 @@ import {
 import {InsertPollDialog} from '../PollPlugin';
 import {InsertNewTableDialog, InsertTableDialog} from '../TablePlugin';
 import {$createColoredNode} from '../../nodes/ColorNode';
-import {INSERT_INLINE_COMMAND} from '../CommentPlugin';
+import {INSERT_INLINE_COMMAND} from '../CommentPluginCustomDn';
 
 const blockTypeToBlockName = {
   bullet: 'Bulleted List',
@@ -571,20 +571,9 @@ export default function ToolbarPlugin(): JSX.Element {
     [applyStyleText],
   );
 
-  const onBgColorSelect = useCallback(
-    (value: string) => {
-      applyStyleText({'background-color': value});
-    },
-    [applyStyleText],
-  );
 
-  const insertLink = useCallback(() => {
-    if (!isLink) {
-      editor.dispatchCommand(TOGGLE_LINK_COMMAND, sanitizeUrl('https://'));
-    } else {
-      editor.dispatchCommand(TOGGLE_LINK_COMMAND, null);
-    }
-  }, [editor, isLink]);
+
+
 
   const onCodeLanguageSelect = useCallback(
     (value: string) => {
@@ -603,14 +592,7 @@ export default function ToolbarPlugin(): JSX.Element {
     activeEditor.dispatchCommand(INSERT_IMAGE_COMMAND, payload);
   };
 
-  const selectElementText = (el: EventTarget) => {
-    const range = document.createRange();
-    range.selectNode(el as HTMLSpanElement);
 
-    const sel = window.getSelection();
-    sel?.removeAllRanges();
-    sel?.addRange(range);
-  };
 
   const handleTest = () => {
     editor.update(() => {
@@ -645,15 +627,6 @@ export default function ToolbarPlugin(): JSX.Element {
     });
   };
 
-  const clearSelected = useCallback(() => {
-    editor.update(() => {
-      const selection = $getSelection();
-
-      if ($isNodeSelection(selection)) {
-        selection.clear();
-      }
-    });
-  }, [editor]);
 
   return (
     <div

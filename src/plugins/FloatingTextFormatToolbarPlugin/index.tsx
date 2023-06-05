@@ -28,7 +28,7 @@ import {createPortal} from 'react-dom';
 import {getDOMRangeRect} from '../../utils/getDOMRangeRect';
 import {getSelectedNode} from '../../utils/getSelectedNode';
 import {setFloatingElemPosition} from '../../utils/setFloatingElemPosition';
-import {INSERT_INLINE_COMMAND} from '../CommentPlugin';
+import {INSERT_INLINE_COMMAND} from '../CommentPluginCustomDn';
 
 function TextFormatFloatingToolbar({
   editor,

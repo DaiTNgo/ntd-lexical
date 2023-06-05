@@ -68,7 +68,7 @@ const PlaygroundNodes: Array<Klass<LexicalNode>> = [
   CollapsibleContainerNode,
   CollapsibleContentNode,
   CollapsibleTitleNode,
-  ColoredNode
+  ColoredNode, //TODO:dn
 ];
 
 export default PlaygroundNodes;
